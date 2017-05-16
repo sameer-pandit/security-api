@@ -13,7 +13,7 @@
 
     <groupId>javax.security</groupId>
     <artifactId>javax.security-api</artifactId>
-    <version>1.0-m03-SNAPSHOT</version>
+    <version>1.0-m03</version>
     <packaging>bundle</packaging>
 
     <name>Java EE Security API</name>
@@ -56,6 +56,19 @@
 			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
 		</snapshotRepository>
     </distributionManagement>
+    <scm>
+        <connection>
+            scm:git:https://github.com/javaee-security-spec/soteria.git
+        </connection>
+        <developerConnection>
+            scm:git:git@github.com/javaee-security-spec/soteria.git
+        </developerConnection>
+        <url>https://github.com/javaee-security-spec/soteria</url>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/javaee-security-spec/soteria/issues</url>
+    </issueManagement>
 
     <dependencies>
         <dependency>
@@ -234,6 +247,15 @@
                     <content>${project.reporting.outputDirectory}/apidocs</content>
                     <pubScmUrl>scm:git:git@github.com:javaee-security-spec/security-api.git</pubScmUrl>
                     <scmBranch>gh-pages</scmBranch>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments>${release.arguments}</arguments>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
         </plugins>
